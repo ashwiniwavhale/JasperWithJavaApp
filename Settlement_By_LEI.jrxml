@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2016-02-18T14:42:19 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Settlement_By_LEI" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d1fabd32-fb68-460c-ac1a-65e869f82415">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SQL Oracle"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<queryString>
+		<![CDATA[select * from tbl_trade_details]]>
+	</queryString>
+	<field name="CONTR_LEGAL_ENTITY" class="java.math.BigDecimal"/>
+	<field name="LEF_NAME" class="java.lang.String"/>
+	<field name="SO1_FINAL_LOCATION" class="java.lang.String"/>
+	<field name="CORE_LINE_OF_BUSINESS" class="java.lang.String"/>
+	<field name="SO1_UNITS" class="java.math.BigDecimal"/>
+	<variable name="SO1_UNITS1" class="java.math.BigDecimal" resetType="Group" resetGroup="LOC" calculation="Sum">
+		<variableExpression><![CDATA[$F{SO1_UNITS}]]></variableExpression>
+	</variable>
+	<group name="LEI">
+		<groupExpression><![CDATA[$F{CONTR_LEGAL_ENTITY}]]></groupExpression>
+		<groupHeader>
+			<band height="49">
+				<rectangle>
+					<reportElement x="0" y="0" width="800" height="49" uuid="b3f05add-f671-4d86-94c6-6a99588ef06c"/>
+				</rectangle>
+				<textField>
+					<reportElement x="20" y="5" width="100" height="30" uuid="7119f55a-e0e1-4ef0-a682-20b2f3a248e9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{CONTR_LEGAL_ENTITY}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="MLE">
+		<groupExpression><![CDATA[$F{LEF_NAME}]]></groupExpression>
+		<groupHeader>
+			<band height="45">
+				<rectangle>
+					<reportElement x="1" y="0" width="800" height="44" uuid="c06d6133-094d-46fb-ba56-e1aa48d1ac66"/>
+				</rectangle>
+				<textField>
+					<reportElement x="220" y="7" width="210" height="30" uuid="8a32364a-cf1c-43cb-ab3c-43b81a9cbabb"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{LEF_NAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="LOB">
+		<groupExpression><![CDATA[$F{CORE_LINE_OF_BUSINESS}]]></groupExpression>
+		<groupHeader>
+			<band height="44">
+				<rectangle>
+					<reportElement x="0" y="-4" width="800" height="48" uuid="1c5a1510-28d4-40b3-9a8b-a44045f12f74"/>
+				</rectangle>
+				<textField>
+					<reportElement x="380" y="5" width="100" height="30" uuid="0afabfbb-1c05-4621-9e52-82f31e53fc09"/>
+					<textFieldExpression><![CDATA[$F{CORE_LINE_OF_BUSINESS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="LOC">
+		<groupExpression><![CDATA[$F{SO1_FINAL_LOCATION}]]></groupExpression>
+		<groupHeader>
+			<band height="58">
+				<rectangle>
+					<reportElement x="1" y="0" width="801" height="50" uuid="1b9006fd-2bba-4d1f-b36b-e742a0204f1f"/>
+				</rectangle>
+				<textField>
+					<reportElement x="550" y="13" width="100" height="30" uuid="6471dd4e-fa4d-4fb5-9bf2-2e945f18d96f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{SO1_FINAL_LOCATION}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="680" y="18" width="100" height="30" uuid="e9c3f050-e8e8-4208-81e5-e420c2cb1fcc"/>
+					<textFieldExpression><![CDATA[$F{SO1_UNITS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="38"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="80" y="0" width="600" height="44" uuid="08806067-e5ad-4cc1-aaaf-67c61e69234f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Settlement By Legal Entity]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="65" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<rectangle>
+				<reportElement x="0" y="15" width="800" height="50" backcolor="rgba(25, 158, 125, 0.7607843)" uuid="4f0478b0-1726-4670-ac37-2564288a8943"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="25" width="140" height="30" uuid="4e0070b1-fabd-4ed0-9e5a-796856a3c9b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[LEI ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="25" width="210" height="30" uuid="45c8502c-9a4b-4720-9d2f-356c61349529"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Legal Entity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="25" width="150" height="30" uuid="ebe937e7-ecae-4899-8ece-ef1b13265044"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Line Of Business]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="520" y="25" width="130" height="30" uuid="0730deb9-2e13-4abf-b6ff-9ba1ae5024fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="650" y="25" width="150" height="30" uuid="4ac80d7d-5fb8-4791-9844-f7f9d317a5cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Volumes]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="115" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
